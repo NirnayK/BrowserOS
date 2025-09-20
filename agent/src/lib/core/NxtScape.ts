@@ -4,6 +4,7 @@ import { Logging } from "@/lib/utils/Logging";
 import { BrowserContext } from "@/lib/browser/BrowserContext";
 import { ExecutionContext } from "@/lib/runtime/ExecutionContext";
 import { MessageManager } from "@/lib/runtime/MessageManager";
+import { PersistentMessageManager } from "@/lib/runtime/PersistentMessageManager";
 import { profileStart, profileEnd, profileAsync } from "@/lib/utils/profiler";
 import { BrowserAgent } from "@/lib/agent/BrowserAgent";
 import { ChatAgent } from "@/lib/agent/ChatAgent";
@@ -115,7 +116,7 @@ export class NxtScape {
         Logging.log("NxtScape", `Initializing MessageManager with ${maxTokens} token limit`);
         
         // Initialize message manager with correct token limit
-        this.messageManager = new MessageManager(maxTokens);
+        this.messageManager = new PersistentMessageManager({ maxTokens });
         
         // Create execution context with properly configured message manager
         this.executionContext = new ExecutionContext({

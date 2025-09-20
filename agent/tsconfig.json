@@ -28,7 +28,8 @@
       "./src/types"
     ],
     "types": [
-      "chrome"
+      "chrome",
+      "node"
     ]
   },
   "include": ["src/**/*", "tests/**/*"],
